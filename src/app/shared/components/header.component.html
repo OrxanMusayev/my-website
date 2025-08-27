@@ -1,0 +1,47 @@
+<header class="header" [class.scrolled]="isScrolled">
+  <div class="container">
+    <div class="header-content">
+      
+      <nav class="nav" [class.mobile-open]="isMobileMenuOpen">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">
+          Ana Səhifə
+        </a>
+        <a routerLink="/about" routerLinkActive="active" class="nav-link">
+          Haqqımda
+        </a>
+        <a routerLink="/services" routerLinkActive="active" class="nav-link">
+          Xidmətlər
+        </a>
+        <a routerLink="/marketplace" routerLinkActive="active" class="nav-link">
+          Marketplace
+        </a>
+        <a routerLink="/blog" routerLinkActive="active" class="nav-link">
+          Bloq
+        </a>
+        <a routerLink="/contact" routerLinkActive="active" class="nav-link">
+          Əlaqə
+        </a>
+      </nav>
+      
+      <div class="header-actions">
+        <button 
+          class="theme-toggle" 
+          (click)="toggleTheme()"
+          [attr.aria-label]="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'">
+          {{ isDarkMode ? '☀️' : '🌙' }}
+        </button>
+        
+        <button 
+          class="mobile-menu-toggle" 
+          [class.open]="isMobileMenuOpen"
+          (click)="toggleMobileMenu()"
+          aria-label="Toggle menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+      
+    </div>
+  </div>
+</header>

@@ -1,0 +1,146 @@
+<!-- Blog Hero Section -->
+<section class="blog-hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>AI İçgörüleri ve Trendleri</h1>
+      <p>Yapay zeka dünyasındaki son gelişmeler, pratik ipuçları ve iş stratejileri.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Category Filter -->
+<section class="category-filter">
+  <div class="container">
+    <div class="filter-buttons">
+      <button 
+        *ngFor="let category of categories"
+        [class.active]="category.active"
+        (click)="filterByCategory(category.slug)"
+        class="filter-btn"
+      >
+        {{ category.name }}
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Blog Hero Section -->
+<section class="blog-hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>AI Bloq</h1>
+      <p>AI texnologiyalarındakı son trendlər, praktik məsləhətlər və rəy yazıları.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Post -->
+<section class="featured-post-section" *ngIf="featuredPost">
+  <div class="container">
+    <h2 class="section-title">Populyar Məqalə</h2>
+    <div class="featured-post-card">
+      <div class="post-image">
+        <img [src]="featuredPost.image" [alt]="featuredPost.title">
+        <div class="post-category">{{ featuredPost.category }}</div>
+      </div>
+      <div class="post-content">
+        <h3>{{ featuredPost.title }}</h3>
+        <p class="post-excerpt">{{ featuredPost.excerpt }}</p>
+        <div class="post-meta">
+          <span class="post-date">{{ featuredPost.date | date:'d MMMM yyyy' }}</span>
+          <span class="post-read-time">{{ featuredPost.readTime }} dəq oxu</span>
+        </div>
+        <a [href]="featuredPost.link" class="btn btn-primary" target="_blank">
+          Oxumağa Davam Et
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Blog Posts Grid -->
+<section class="blog-section">
+  <div class="container">
+    <h2 class="section-title">Son Məqalələr</h2>
+    <div class="posts-grid">
+      <article class="post-card" *ngFor="let post of blogPosts">
+        <div class="post-image">
+          <img [src]="post.image" [alt]="post.title">
+          <div class="post-category">{{ post.category }}</div>
+        </div>
+        <div class="post-content">
+          <h3>{{ post.title }}</h3>
+          <p class="post-excerpt">{{ post.excerpt }}</p>
+          <div class="post-meta">
+            <span class="post-date">{{ post.date | date:'d MMMM yyyy' }}</span>
+            <span class="post-read-time">{{ post.readTime }} dəq oxu</span>
+          </div>
+          <a [href]="post.link" class="btn btn-outline" target="_blank">
+            Daha Ətraflı
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-content">
+      <h2>AI Xəbər Bülleteni</h2>
+      <p>AI dünyasındakı son inkişafları qaçırmayın. Həftəlik xəbər bültenimizdə en vacib yenilikləri sizə çatdırıram.</p>
+      <form class="newsletter-form">
+        <input 
+          type="email" 
+          placeholder="E-mail ünvanınız" 
+          class="email-input"
+          required
+        >
+        <button type="submit" class="btn btn-primary">
+          Abunə Ol
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Blog Posts Grid -->
+<section class="blog-posts">
+  <div class="container">
+    <div class="posts-grid">
+      <article 
+        class="post-card" 
+        *ngFor="let post of filteredPosts; let i = index"
+        [class.hidden]="i === 0 && post.featured"
+      >
+        <div class="post-image">
+          <img [src]="post.image" [alt]="post.title" />
+        </div>
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="date">{{ post.date | date:'dd MMM yyyy':'tr' }}</span>
+            <span class="read-time">{{ post.readTime }}</span>
+          </div>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.excerpt }}</p>
+          <a href="#" class="read-more">Devamını Oku →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="newsletter">
+  <div class="container">
+    <div class="newsletter-content">
+      <h2>AI Dünyasından Haberdar Olun</h2>
+      <p>Yeni yazılarımızı ve AI trendlerini e-posta ile takip edin.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="E-posta adresiniz" />
+        <button type="submit" class="btn btn-primary">Abone Ol</button>
+      </form>
+    </div>
+  </div>
+</section>

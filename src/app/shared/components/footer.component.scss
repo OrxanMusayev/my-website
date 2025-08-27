@@ -1,0 +1,258 @@
+.footer {
+  background: #333333;
+  color: var(--text-primary);
+  margin-top: auto;
+
+  // Dark mode için farklı renk
+  [data-theme="dark"] & {
+    background: #2c2c2e;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  // Main Footer Content
+  .footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 3rem;
+    padding: 4rem 0 3rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding: 3rem 0 2rem;
+    }
+  }
+
+  .footer-section {
+    h4 {
+      color: var(--text-primary);
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    // Brand Section
+    .footer-brand {
+      margin-bottom: 2rem;
+
+      h3 {
+        font-size: 1.75rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+      }
+
+      .brand-subtitle {
+        color: var(--secondary);
+        font-weight: 600;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+      }
+
+      .brand-description {
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.6;
+        font-size: 0.95rem;
+      }
+    }
+
+        // Social Links - Font Awesome İconları
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+
+        i {
+          font-size: 24px;
+        }
+
+        &:hover {
+          transform: scale(1.1);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        // LinkedIn - orijinal renk
+        &.linkedin {
+          background: #0077b5;
+          color: #ffffff;
+          
+          &:hover {
+            background: #005582;
+          }
+        }
+
+        // Instagram - orijinal gradient
+        &.instagram {
+          background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+          color: #ffffff;
+          
+          &:hover {
+            background: linear-gradient(45deg, #d8832b 0%, #c85a32 25%, #b91f37 50%, #a71e56 75%, #9c1575 100%);
+          }
+        }
+
+        // Email - Gmail kırmızısı
+        &.email {
+          background: #ea4335;
+          color: #ffffff;
+          
+          &:hover {
+            background: #d33527;
+          }
+        }
+      }
+    }
+
+    // Dark mode'da da aynı brand renkleri
+    [data-theme="dark"] .social-links .social-link {
+      &:hover {
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+      }
+
+      // Orijinal brand renkleri korunur
+      &.linkedin {
+        background: #0077b5;
+        color: #ffffff;
+        
+        &:hover {
+          background: #005582;
+        }
+      }
+
+      &.instagram {
+        background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        color: #ffffff;
+        
+        &:hover {
+          background: linear-gradient(45deg, #d8832b 0%, #c85a32 25%, #b91f37 50%, #a71e56 75%, #9c1575 100%);
+        }
+      }
+
+      &.email {
+        background: #ea4335;
+        color: #ffffff;
+        
+        &:hover {
+          background: #d33527;
+        }
+      }
+    }
+
+    // Footer Links
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 0.75rem;
+
+        a, span {
+          color: var(--text-secondary);
+          text-decoration: none;
+          font-size: 0.95rem;
+          transition: color 0.3s ease;
+          cursor: pointer;
+
+          &:hover {
+            color: var(--secondary);
+          }
+        }
+
+        span {
+          cursor: default;
+          
+          &:hover {
+            color: rgba(255, 255, 255, 0.8);
+          }
+        }
+      }
+    }
+
+    // Contact Info
+    .contact-info {
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+
+        .contact-icon {
+          font-size: 1.1rem;
+        }
+
+        a, span {
+          color: rgba(255, 255, 255, 0.8);
+          text-decoration: none;
+          font-size: 0.95rem;
+          transition: color 0.3s ease;
+        }
+
+        a:hover {
+          color: var(--secondary);
+        }
+      }
+    }
+  }
+
+  // Footer Bottom
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem 0;
+
+    .footer-bottom-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+      }
+
+      .copyright {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+        margin: 0;
+      }
+
+      .footer-bottom-links {
+        display: flex;
+        gap: 2rem;
+
+        @media (max-width: 768px) {
+          gap: 1.5rem;
+        }
+
+        .footer-link {
+          color: var(--text-secondary);
+          text-decoration: none;
+          font-size: 0.9rem;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: var(--secondary);
+          }
+        }
+      }
+    }
+  }
+}

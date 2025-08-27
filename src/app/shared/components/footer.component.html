@@ -1,0 +1,89 @@
+<footer class="footer">
+  <div class="container">
+    
+    <!-- Main Footer Content -->
+    <div class="footer-content">
+      
+      <!-- Brand Section -->
+      <div class="footer-section">
+        <div class="footer-brand">
+          <h3>Orxan Musayev</h3>
+          <p class="brand-subtitle">AI Məsləhətçisi & Strateqisti</p>
+          <p class="brand-description">
+            Süni intellekt texnologiyalarını işinizə inteqrasiya edərək effektivliyi artırın və 
+            rəqabət üstünlüyü qazanın.
+          </p>
+        </div>
+        
+        <!-- Social Links -->
+        <div class="social-links">
+          <a 
+            *ngFor="let social of socialLinks" 
+            [href]="social.url" 
+            target="_blank"
+            [title]="social.name"
+            class="social-link"
+            [ngClass]="social.platform"
+          >
+            <i [class]="social.icon"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h4>Sürətli Linklər</h4>
+        <ul class="footer-links">
+          <li *ngFor="let link of quickLinks">
+            <a [routerLink]="link.route">{{ link.name }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-section">
+        <h4>Xidmətlər</h4>
+        <ul class="footer-links">
+          <li *ngFor="let service of services">
+            <span>{{ service }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-section">
+        <h4>Əlaqə</h4>
+        <div class="contact-info">
+          <div class="contact-item">
+            <span class="contact-icon">📧</span>
+            <a href="mailto:info@orxanmusayev.com">info@orxanmusayev.com</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📱</span>
+            <a href="tel:+994501234567">+994 50 123 45 67</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <span>Bakı, Azərbaycan</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <p class="copyright">
+          © {{ currentYear }} Orxan Musayev. Bütün hüquqlar qorunur.
+        </p>
+        <div class="footer-bottom-links">
+          <a href="#" class="footer-link">Məxfilik Siyasəti</a>
+          <a href="#" class="footer-link">İstifadə Şərtləri</a>
+          <a href="#" class="footer-link">Kuki Siyasəti</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</footer>

@@ -1,0 +1,457 @@
+// CSS Reset & Global Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// CSS Custom Properties for // Container utility
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+}oot {
+  // iOS-style sophisticated color palette
+  --primary-color: #000000;
+  --secondary-color: #1c1c1e;
+  --accent-color: #48484a;
+  
+  // Background colors - iOS gradient style
+  --bg-primary: linear-gradient(135deg, #f8f9fa 0%, #f2f2f7 100%);
+  --bg-secondary: linear-gradient(135deg, #f2f2f7 0%, #e5e5ea 100%);
+  --bg-accent: linear-gradient(135deg, #e5e5ea 0%, #d1d1d6 100%);
+  --bg-card: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+  --bg-hero: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
+  --bg-footer: linear-gradient(135deg, #f8f9fa 0%, #f2f2f7 100%);
+  
+  // Text colors - high contrast
+  --text-primary: #000000;
+  --text-secondary: #1c1c1e;
+  --text-muted: #48484a;
+  --text-light: #8e8e93;
+  --text-inverse: #ffffff;
+  
+  // Border and divider colors
+  --border-color: #d1d1d6;
+  --border-light: #e5e5ea;
+  --divider-color: #c7c7cc;
+  
+  // Button colors - iOS style
+  --btn-primary-bg: linear-gradient(135deg, #000000 0%, #1c1c1e 100%);
+  --btn-primary-text: #ffffff;
+  --btn-primary-hover: linear-gradient(135deg, #1c1c1e 0%, #2c2c2e 100%);
+  
+  --btn-secondary-bg: linear-gradient(135deg, #f2f2f7 0%, #ffffff 100%);
+  --btn-secondary-text: #000000;
+  --btn-secondary-border: #d1d1d6;
+  --btn-secondary-hover: linear-gradient(135deg, #e5e5ea 0%, #f2f2f7 100%);
+  
+  // Card and component backgrounds
+  --card-bg: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+  --card-border: #e5e5ea;
+  --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  
+  // Section backgrounds
+  --section-bg-1: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  --section-bg-2: linear-gradient(135deg, #f2f2f7 0%, #e9ecef 100%);
+  --section-bg-3: linear-gradient(135deg, #e5e5ea 0%, #d1d1d6 100%);
+}
+
+[data-theme="dark"] {
+  // iOS dark mode - sophisticated gradients
+  --primary-color: #ffffff;
+  --secondary-color: #e3e3e3;
+  --accent-color: #b7b7b7;
+  
+  // Background colors - saf siyah arka plan
+  --bg-primary: #000000;
+  --bg-secondary: #000000;
+  --bg-accent: #000000;
+  --bg-card: linear-gradient(135deg, #0d0d0d 0%, #050505 100%);
+  --bg-hero: #000000;
+  --bg-footer: linear-gradient(135deg, #161618 0%, #1a1a1a 100%);
+  
+  // Text colors - high contrast dark
+  --text-primary: #ffffff;
+  --text-secondary: #e3e3e3;
+  --text-muted: #b7b7b7;
+  --text-light: #71717a;
+  --text-inverse: #000000;
+  
+  // Border and divider colors
+  --border-color: #2e2e2e;
+  --border-light: #1a1a1a;
+  --divider-color: #383838;
+  
+  // Button colors - dark iOS style
+  --btn-primary-bg: linear-gradient(135deg, #ffffff 0%, #e3e3e3 100%);
+  --btn-primary-text: #000000;
+  --btn-primary-hover: linear-gradient(135deg, #e3e3e3 0%, #d3d3d3 100%);
+  
+  --btn-secondary-bg: linear-gradient(135deg, #0d0d0d 0%, #000000 100%);
+  --btn-secondary-text: #ffffff;
+  --btn-secondary-border: #2e2e2e;
+  --btn-secondary-hover: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+  
+  // Card and component backgrounds
+  --card-bg: linear-gradient(135deg, #000000 0%, #050505 100%);
+  --card-border: #1a1a1a;
+  --card-shadow: 0 4px 16px rgba(255, 255, 255, 0.08), 0 2px 8px rgba(255, 255, 255, 0.04);
+  
+  // Section backgrounds
+  --section-bg-1: linear-gradient(135deg, #000000 0%, #070809 100%);
+  --section-bg-2: linear-gradient(135deg, #0d0d0d 0%, #161618 100%);
+  --section-bg-3: linear-gradient(135deg, #1a1a1a 0%, #2e2e2e 100%);
+}
+
+// Base styles with iOS aesthetics
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+// Force dark mode navbar
+html[data-theme="dark"] .header,
+body[data-theme="dark"] .header,
+[data-theme="dark"] .header {
+  background: #000000 !important;
+  backdrop-filter: none !important;
+  border-bottom: none !important;
+  border-bottom-color: transparent !important;
+}
+
+// iOS-style sections with alternating backgrounds
+section {
+  padding: 4rem 0;
+  position: relative;
+  
+  &:nth-child(odd) {
+    background: var(--section-bg-1);
+  }
+  
+  &:nth-child(even) {
+    background: var(--section-bg-2);
+  }
+  
+  &.hero {
+    background: var(--bg-hero);
+    padding: 6rem 0;
+  }
+  
+  &.accent {
+    background: var(--section-bg-3);
+  }
+}
+
+// Typography with iOS feel
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.3;
+}
+
+p {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// iOS-style buttons
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+  }
+  
+  &:hover::before {
+    transform: scale(1.05);
+  }
+  
+  &.btn-primary {
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+    
+    &:hover {
+      background: var(--btn-primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16), 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+  }
+  
+  &.btn-secondary {
+    background: var(--btn-secondary-bg);
+    color: var(--btn-secondary-text);
+    border: 1px solid var(--btn-secondary-border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    
+    &:hover {
+      background: var(--btn-secondary-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+  }
+  
+  &.btn-outline {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    
+    &:hover {
+      background: var(--bg-secondary);
+      border-color: var(--text-primary);
+    }
+  }
+}
+
+// iOS-style cards
+.card, .service-card, .post-card, .benefit-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+}
+
+// Form elements with iOS style
+input, textarea, select {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  background: var(--card-bg);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  
+  &:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+  }
+  
+  &::placeholder {
+    color: var(--text-light);
+  }
+}
+
+// Section Title
+.section-title {
+  font-size: 2.5rem;
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 3rem;
+  font-weight: 700;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+// Button Styles
+.btn {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  line-height: 1.5;
+
+  &.btn-primary {
+    background: var(--primary);
+    color: var(--background);
+
+    &:hover {
+      background: var(--text-secondary);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px var(--shadow);
+    }
+  }
+
+  &.btn-secondary {
+    background: var(--secondary);
+    color: var(--background);
+
+    &:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px var(--shadow);
+    }
+  }
+
+  &.btn-outline {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 2px solid var(--border);
+
+    &:hover {
+      background: var(--text-secondary);
+      color: var(--background);
+      transform: translateY(-2px);
+    }
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+}
+
+// Main Layout
+.main-content {
+  padding-top: 80px; // Account for fixed header
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+}
+
+// Utility Classes
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 1rem; }
+.mt-4 { margin-top: 1.5rem; }
+.mt-5 { margin-top: 3rem; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.mb-5 { margin-bottom: 3rem; }
+
+// Animations
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+// Loading Spinner
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+// Responsive helpers
+.mobile-only {
+  @media (min-width: 769px) {
+    display: none !important;
+  }
+}
+
+.desktop-only {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}

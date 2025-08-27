@@ -1,0 +1,58 @@
+<!-- About Hero Section -->
+<section class="about-hero">
+  <div class="container">
+    <div class="about-hero-content">
+      <div class="profile-section">
+        <div class="profile-image">
+          <img src="assets/images/orxan-musayev.png" alt="Orxan Musayev" />
+        </div>
+        <div class="profile-info">
+          <h1>{{ profileData.name }}</h1>
+          <p class="title">{{ profileData.title }}</p>
+          <p class="bio">{{ profileData.bio }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Statistics Section -->
+<section class="statistics">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card" *ngFor="let stat of profileData.experience">
+        <h3 class="stat-number">{{ stat.title }}</h3>
+        <p class="stat-description">{{ stat.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mission & Vision Section -->
+<section class="mission-vision">
+  <div class="container">
+    <div class="mv-grid">
+      <div class="mv-card">
+        <div class="mv-icon">🎯</div>
+        <h2>Missiya</h2>
+        <p>{{ profileData.mission }}</p>
+      </div>
+      <div class="mv-card">
+        <div class="mv-icon">🚀</div>
+        <h2>Vizyon</h2>
+        <p>{{ profileData.vision }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Birlikdə İşləyək</h2>
+      <p>AI\'ın gücünü işinizə inteqrasiya etmək üçün bu gün əlaqə saxlayın.</p>
+      <button class="btn btn-primary" routerLink="/contact">Əlaqə Saxla</button>
+    </div>
+  </div>
+</section>

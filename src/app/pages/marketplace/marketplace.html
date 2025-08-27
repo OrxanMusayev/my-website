@@ -1,0 +1,120 @@
+<!-- Marketplace Hero Section -->
+<section class="marketplace-hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>AI Otomasyonlar Marketi</h1>
+      <p class="hero-subtitle">
+        Hazır N8N iş akışları ilə biznesinizi avtomatlaşdırın. Müştəri dəstəyindən marketinqə qədər hər sahə üçün hazır həllər.
+      </p>
+      
+      <!-- Search Bar -->
+      <div class="search-section">
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input 
+            type="text" 
+            placeholder="Otomasyon axtarın..."
+            (input)="onSearchChange($event)"
+            [value]="searchTerm"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Categories Section -->
+<section class="categories-section">
+  <div class="container">
+    <div class="categories-filter">
+      <button 
+        *ngFor="let category of categories"
+        [class.active]="selectedCategory === category"
+        (click)="selectCategory(category)"
+        class="category-btn"
+      >
+        {{ category }}
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Automations Grid -->
+<section class="automations-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Mövcud Otomasyonlar</h2>
+      <p>{{ filteredAutomations.length }} otomasyon tapıldı</p>
+    </div>
+    
+    <div class="automations-grid">
+      <div 
+        *ngFor="let automation of filteredAutomations" 
+        class="automation-card"
+      >
+        <div class="card-image">
+          <img [src]="automation.image" [alt]="automation.title" />
+          <div class="card-overlay">
+            <span class="category-badge">{{ automation.category }}</span>
+          </div>
+        </div>
+        
+        <div class="card-content">
+          <h3>{{ automation.title }}</h3>
+          <p class="description">{{ automation.description }}</p>
+          
+          <div class="features">
+            <span 
+              *ngFor="let feature of automation.features" 
+              class="feature-tag"
+            >
+              {{ feature }}
+            </span>
+          </div>
+          
+          <div class="card-stats">
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <span>{{ automation.rating }}</span>
+            </div>
+            <div class="downloads">
+              <i class="fas fa-download"></i>
+              <span>{{ automation.downloads }}</span>
+            </div>
+          </div>
+          
+          <div class="card-footer">
+            <div class="price">
+              <span class="amount">${{ automation.price }}</span>
+              <span class="period">/ay</span>
+            </div>
+            <button class="btn btn-primary">
+              İndir
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Subscription CTA -->
+<section class="subscription-cta">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Sınırsız Otomasyona Girişim</h2>
+      <p>
+        Premium üzvlüyümüz ilə bütün otomasyonlara giriş əldə edin. 
+        Hər ay yeni otomasyonlar əlavə edilir.
+      </p>
+      <div class="cta-buttons">
+        <button class="btn btn-primary" routerLink="/services">
+          Premium Ol
+        </button>
+        <button class="btn btn-secondary" routerLink="/services">
+          Fərdi Həll İstəyin
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
