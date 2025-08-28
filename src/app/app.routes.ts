@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ServicesComponent } from './pages/services/services.component';
-import { BlogComponent } from './pages/blog/blog.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { MarketplaceComponent } from './pages/marketplace/marketplace';
 
@@ -37,14 +36,6 @@ export const routes: Routes = [
     title: 'AI Otomasyonlar | N8N İş Akışları Marketi',
     data: { 
       description: 'Hazır AI otomasyonlarını keşfedin ve işinizi kolaylaştırın. WhatsApp, e-mail, sosyal medya otomasyonları.' 
-    }
-  },
-  { 
-    path: 'blog', 
-    component: BlogComponent,
-    title: 'AI Blog | Yapay Zeka Trendleri ve İçgörüler',
-    data: { 
-      description: 'AI dünyasındaki son gelişmeler, pratik ipuçları ve iş stratejileri hakkında yazılar.' 
     }
   },
   { 

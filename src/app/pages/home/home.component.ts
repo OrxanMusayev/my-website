@@ -15,10 +15,4 @@ export class HomeComponent {
     { title: 'Xərcləri Azaldın', description: 'Səmərəli AI həlləri ilə qənaət edin' },
     { title: 'Məhsuldarlığı Artırın', description: 'İş axınlarınızı optimallaşdırın' }
   ];
-
-  blogPosts = [
-    { title: 'AI ilə İş Proseslərində Transformasiya', excerpt: 'Müasir biznes dünyasında AI\'ın rolu...' },
-    { title: 'Gələcəyin AI Trendləri', excerpt: '2025\'də bizi gözləyən AI inkişafları...' },
-    { title: 'Kiçik Müəssisələr üçün AI Alətləri', excerpt: 'KOM\'lər üçün ən uyğun AI həlləri...' }
-  ];
 }

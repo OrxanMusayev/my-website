@@ -1,14 +1,15 @@
 <!-- Hero Section -->
 <section class="hero">
+  <div class="hero-overlay"></div>
   <div class="hero-content">
     <h1 class="hero-title">Fikirlərinizi AI ilə Gerçəkləşdirin</h1>
     <p class="hero-subtitle">
-      Mən Orxan Musayevəm. Fərdi sahibkarların və şirkətlərin süni zəka istifadə edərək 
+      Mən Orxan Musayevəm. Fərdi sahibkarların və şirkətlərin süni zəka istifadə edərək
       innovativ həllər yaratmalarına kömək edirəm.
     </p>
     <div class="hero-buttons">
       <button class="btn btn-primary" routerLink="/services">Xidmətləri Kəşf Et</button>
-      <button class="btn btn-secondary" routerLink="/contact">Pulsuz Ön Məsləhət Al</button>
+      <button class="btn btn-secondary" routerLink="/contact">Ödənişsiz konsultasiyaya qoşul</button>
     </div>
   </div>
 </section>
@@ -22,23 +23,6 @@
         <h3>{{ service.title }}</h3>
         <p>{{ service.description }}</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- Blog Preview Section -->
-<section class="blog-preview">
-  <div class="container">
-    <h2 class="section-title">Son Bloq Yazıları</h2>
-    <div class="blog-grid">
-      <article class="blog-card" *ngFor="let post of blogPosts">
-        <h3>{{ post.title }}</h3>
-        <p>{{ post.excerpt }}</p>
-        <a href="#" class="read-more">Davamını Oxu →</a>
-      </article>
-    </div>
-    <div class="blog-cta">
-      <button class="btn btn-outline" routerLink="/blog">Bütün Yazıları Göstər</button>
     </div>
   </div>
 </section>

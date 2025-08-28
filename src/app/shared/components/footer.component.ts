@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { RouterModule, Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-footer',
@@ -9,7 +10,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent {
+export class FooterComponent implements OnInit {
   currentYear = new Date().getFullYear();
 
   quickLinks = [
@@ -17,7 +18,6 @@ export class FooterComponent {
     { name: 'Haqqımda', route: '/about' },
     { name: 'Xidmətlər', route: '/services' },
     { name: 'Marketplace', route: '/marketplace' },
-    { name: 'Bloq', route: '/blog' },
     { name: 'Əlaqə', route: '/contact' }
   ];
 
@@ -49,4 +49,22 @@ export class FooterComponent {
       platform: 'instagram'
     }
   ];
+
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    // Her route değişikliğinde sayfanın başına scroll et
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        window.scrollTo(0, 0);
+      });
+  }
+
+  // Footer linklerine tıklandığında da scroll to top
+  onLinkClick() {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100);
+  }
 }

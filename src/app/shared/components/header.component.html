@@ -3,22 +3,19 @@
     <div class="header-content">
       
       <nav class="nav" [class.mobile-open]="isMobileMenuOpen">
-        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link" (click)="onNavLinkClick()">
           Ana Səhifə
         </a>
-        <a routerLink="/about" routerLinkActive="active" class="nav-link">
+        <a routerLink="/about" routerLinkActive="active" class="nav-link" (click)="onNavLinkClick()">
           Haqqımda
         </a>
-        <a routerLink="/services" routerLinkActive="active" class="nav-link">
+        <a routerLink="/services" routerLinkActive="active" class="nav-link" (click)="onNavLinkClick()">
           Xidmətlər
         </a>
-        <a routerLink="/marketplace" routerLinkActive="active" class="nav-link">
+        <a routerLink="/marketplace" routerLinkActive="active" class="nav-link" (click)="onNavLinkClick()">
           Marketplace
         </a>
-        <a routerLink="/blog" routerLinkActive="active" class="nav-link">
-          Bloq
-        </a>
-        <a routerLink="/contact" routerLinkActive="active" class="nav-link">
+        <a routerLink="/contact" routerLinkActive="active" class="nav-link" (click)="onNavLinkClick()">
           Əlaqə
         </a>
       </nav>

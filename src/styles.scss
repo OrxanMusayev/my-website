@@ -92,10 +92,10 @@
   --btn-primary-text: #000000;
   --btn-primary-hover: linear-gradient(135deg, #e3e3e3 0%, #d3d3d3 100%);
   
-  --btn-secondary-bg: linear-gradient(135deg, #0d0d0d 0%, #000000 100%);
+  --btn-secondary-bg: linear-gradient(135deg, #4a4a4a 0%, #333333 100%);
   --btn-secondary-text: #ffffff;
   --btn-secondary-border: #2e2e2e;
-  --btn-secondary-hover: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+  --btn-secondary-hover: linear-gradient(135deg, #5a5a5a 0%, #4a4a4a 100%);
   
   // Card and component backgrounds
   --card-bg: linear-gradient(135deg, #000000 0%, #050505 100%);
@@ -386,8 +386,7 @@ input, textarea, select {
 }
 
 // Main Layout
-.main-content {
-  padding-top: 80px; // Account for fixed header
+.main-content {// Account for fixed header
   min-height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;

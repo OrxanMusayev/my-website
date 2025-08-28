@@ -1,11 +1,31 @@
 // About Hero Section
 .about-hero {
   padding: 2rem 0 6rem;
-  background: var(--background-light);
+  background: #000000 !important; // Saf siyah arka plan - zorla
+  color: white;
+  position: relative;
+  overflow: hidden;
+
+  .container {
+    background: #000000 !important;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+    opacity: 0.3;
+  }
 
   .about-hero-content {
     max-width: 1000px;
     margin: 0 auto;
+    position: relative;
+    z-index: 2;
   }
 
   .profile-section {
@@ -22,68 +42,261 @@
   }
 
   .profile-image {
+    position: relative;
+
     img {
-      width: 200px;
-      height: 200px;
+      width: 220px;
+      height: 220px;
       border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 0 0 4px rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
     }
   }
 
   .profile-info {
     h1 {
-      font-size: 3rem;
-      color: var(--primary);
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      color: white;
       margin-bottom: 0.5rem;
-      font-weight: 700;
-
-      @media (max-width: 768px) {
-        font-size: 2.5rem;
-      }
+      font-weight: 800;
+      letter-spacing: -0.02em;
     }
 
     .title {
-      font-size: 1.25rem;
-      color: var(--accent);
+      font-size: 1.4rem;
+      color: rgba(255, 255, 255, 0.9);
       font-weight: 600;
       margin-bottom: 1.5rem;
+      opacity: 0.95;
     }
 
     .bio {
       font-size: 1.1rem;
-      line-height: 1.7;
-      color: var(--text-secondary);
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 600px;
     }
   }
 }
 
-// Statistics Section
-.statistics {
+// Personal Info Cards
+.personal-info {
   padding: 6rem 0;
-  background: white;
+  background: #000000 !important; // Saf siyah arka plan - zorla
 
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
+  .container {
+    background: #000000 !important;
   }
 
-  .stat-card {
-    text-align: center;
-    padding: 2rem;
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
-    .stat-number {
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
+  .info-card {
+    background: #2a2a2a; // Koyu gri card arka planı
+    padding: 3rem 2.5rem;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      0 4px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid rgba(255, 255, 255, 0.3); // Beyaz border eklendi
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #ffffff, #cccccc);
     }
 
-    .stat-description {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      font-weight: 500;
+    &:hover {
+      transform: translateY(-12px) scale(1.02);
+      background: #333333;
+      box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 8px 32px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.5); // Hover'da border daha parlak
+    }
+
+    .info-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #ffffff, #cccccc);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+      i {
+        font-size: 2rem;
+        color: #000000;
+      }
+    }
+
+    h3 {
+      color: white;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+  }
+}
+
+// Professional Journey Timeline
+.professional-journey {
+  padding: 6rem 0;
+  background: #000000 !important; // Saf siyah arka plan - zorla
+  position: relative;
+
+  .container {
+    background: #000000 !important;
+  }
+
+  .journey-timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, #ffffff, #cccccc);
+      transform: translateX(-50%);
+
+      @media (max-width: 768px) {
+        left: 30px;
+      }
+    }
+  }
+
+  .timeline-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+    position: relative;
+
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+
+      .timeline-content {
+        text-align: right;
+      }
+
+      @media (max-width: 768px) {
+        flex-direction: row;
+
+        .timeline-content {
+          text-align: left;
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: row;
+      margin-left: 60px;
+    }
+
+    .timeline-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #ffffff, #cccccc);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      margin: 0 2rem;
+      position: relative;
+      z-index: 2;
+
+      @media (max-width: 768px) {
+        position: absolute;
+        left: -90px;
+        margin: 0;
+      }
+
+      i {
+        font-size: 1.5rem;
+        color: #000000;
+      }
+    }
+
+    .timeline-content {
+      flex: 1;
+      background: #3a3a3a; // Daha açık gri card arka planı
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border: 2px solid rgba(255, 255, 255, 0.3); // Beyaz border eklendi
+
+      &:hover {
+        background: #4a4a4a; // Hover'da daha da açık
+        border-color: rgba(255, 255, 255, 0.5); // Hover'da border daha parlak
+      }
+
+      h3 {
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+      }
+
+      .timeline-period {
+        color: #cccccc;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: block;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.6;
+        font-size: 1rem;
+        margin: 0;
+      }
     }
   }
 }
@@ -91,7 +304,11 @@
 // Mission & Vision Section
 .mission-vision {
   padding: 6rem 0;
-  background: var(--background-light);
+  background: #000000 !important; // Saf siyah arka plan - zorla
+
+  .container {
+    background: #000000 !important;
+  }
 
   .mv-grid {
     display: grid;
@@ -106,34 +323,251 @@
   }
 
   .mv-card {
-    background: var(--background-card);
-    padding: 3rem 2.5rem;
-    border-radius: 20px;
+    background: #2a2a2a; // Koyu gri card arka planı
+    padding: 3.5rem 3rem;
+    border-radius: 24px;
     text-align: center;
-    box-shadow: 0 8px 32px var(--shadow);
-    transition: transform 0.3s ease;
-    border: 1px solid var(--border);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid rgba(255, 255, 255, 0.3); // Beyaz border eklendi
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+      transform: rotate(45deg);
+      transition: transform 0.6s;
+    }
 
     &:hover {
-      transform: translateY(-8px);
+      transform: translateY(-12px);
+      background: #333333;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 255, 255, 0.5); // Hover'da border daha parlak
+
+      &::before {
+        transform: rotate(45deg) translate(50%, 50%);
+      }
     }
 
     .mv-icon {
-      font-size: 3rem;
-      margin-bottom: 1.5rem;
+      font-size: 4rem;
+      margin-bottom: 2rem;
+      display: block;
     }
 
     h2 {
-      color: var(--primary);
-      font-size: 1.75rem;
+      color: white;
+      font-size: 2rem;
       margin-bottom: 1.5rem;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     p {
-      color: var(--text-secondary);
-      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.8;
       font-size: 1.1rem;
+      margin: 0;
+    }
+  }
+}
+
+// Skills Section
+.skills-section {
+  padding: 6rem 0;
+  background: #000000 !important; // Saf siyah arka plan - zorla
+
+  .container {
+    background: #000000 !important;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .skill-category {
+    background: #2a2a2a; // Koyu gri card arka planı
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3); // Beyaz border eklendi
+
+    &:hover {
+      transform: translateY(-8px);
+      background: #333333;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 255, 255, 0.5); // Hover'da border daha parlak
+    }
+
+    .skill-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #ffffff, #cccccc);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+
+      i {
+        font-size: 1.8rem;
+        color: #000000;
+      }
+    }
+
+    h3 {
+      color: white;
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+
+    .skill-tag {
+      background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+      color: rgba(255, 255, 255, 0.9);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: linear-gradient(135deg, #ffffff, #cccccc);
+        color: #000000;
+        transform: translateY(-2px);
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+    }
+  }
+}
+
+// Education Section
+.education-section {
+  padding: 6rem 0;
+  background: #000000 !important; // Saf siyah arka plan - zorla
+
+  .container {
+    background: #000000 !important;
+  }
+
+  .education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .education-card {
+    background: #2a2a2a; // Koyu gri card arka planı
+    padding: 2.5rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3); // Beyaz border eklendi
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, #ffffff, #cccccc);
+    }
+
+    &:hover {
+      transform: translateY(-8px);
+      background: #333333;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 255, 255, 0.5); // Hover'da border daha parlak
+    }
+
+    .education-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #ffffff, #cccccc);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+
+      i {
+        font-size: 1.5rem;
+        color: #000000;
+      }
+    }
+
+    .education-content {
+      flex: 1;
+
+      h3 {
+        color: white;
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        line-height: 1.3;
+      }
+
+      h4 {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+
+      .education-year {
+        color: #cccccc;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: block;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.6;
+        font-size: 0.95rem;
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
     }
   }
 }
@@ -141,42 +575,153 @@
 // CTA Section
 .cta-section {
   padding: 6rem 0;
-  background: linear-gradient(135deg, var(--primary), var(--text-secondary));
+  background: #000000 !important; // Saf siyah arka plan - zorla
   text-align: center;
-  color: var(--background);
+  color: white;
+  position: relative;
+  overflow: hidden;
+
+  .container {
+    background: #000000 !important;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  }
 
   .cta-content {
     max-width: 600px;
     margin: 0 auto;
+    position: relative;
+    z-index: 2;
 
     h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      font-weight: 700;
-
-      @media (max-width: 768px) {
-        font-size: 2rem;
-      }
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: white;
     }
 
     p {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       margin-bottom: 2.5rem;
       opacity: 0.95;
-      line-height: 1.6;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .btn {
+      background: white;
+      color: #000000;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 30px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      border: 2px solid white;
+
+      &:hover {
+        background: #f0f0f0;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+      }
     }
   }
+}
+
+// Global section title styling
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 4rem;
+  font-weight: 700;
+  color: white !important; // Tüm section title'lar beyaz olsun
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+// Animations
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+// Global overrides to force black background everywhere
+* {
+  background-color: inherit;
+}
+
+// Force black background for the entire about component
+:host {
+  background: #000000 !important;
+  min-height: 100vh;
+  display: block;
+}
+
+// Override any global styles that might cause white backgrounds
+section, div, .container, .hero, .about-hero, .personal-info, 
+.professional-journey, .mission-vision, .skills-section, 
+.education-section, .cta-section {
+  background: #000000 !important;
 }
 
 // Responsive adjustments
 @media (max-width: 768px) {
   .about-hero {
-    padding: 6rem 0 4rem;
+    padding: 4rem 0 3rem;
+    background: #000000 !important;
   }
 
-  .statistics,
+  .personal-info,
+  .professional-journey,
   .mission-vision,
+  .skills-section,
+  .education-section,
   .cta-section {
     padding: 4rem 0;
+    background: #000000 !important;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .mv-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .education-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .section-title {
+    font-size: 2rem !important;
+    margin-bottom: 2rem !important;
   }
 }

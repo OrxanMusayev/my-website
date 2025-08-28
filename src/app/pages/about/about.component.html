@@ -16,13 +16,54 @@
   </div>
 </section>
 
-<!-- Statistics Section -->
-<section class="statistics">
+<!-- Personal Info Section -->
+<section class="personal-info">
   <div class="container">
-    <div class="stats-grid">
-      <div class="stat-card" *ngFor="let stat of profileData.experience">
-        <h3 class="stat-number">{{ stat.title }}</h3>
-        <p class="stat-description">{{ stat.description }}</p>
+    <div class="info-grid">
+      <!-- About Me -->
+      <div class="info-card">
+        <div class="info-icon">
+          <i class="fas fa-user"></i>
+        </div>
+        <h3>Kendim Hakkında</h3>
+        <p>{{ personalInfo.about }}</p>
+      </div>
+
+      <!-- Career -->
+      <div class="info-card">
+        <div class="info-icon">
+          <i class="fas fa-briefcase"></i>
+        </div>
+        <h3>Kariyerim</h3>
+        <p>{{ personalInfo.career }}</p>
+      </div>
+
+      <!-- Education -->
+      <div class="info-card">
+        <div class="info-icon">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h3>Təhsilim</h3>
+        <p>{{ personalInfo.education }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Professional Journey Section -->
+<section class="professional-journey">
+  <div class="container">
+    <h2 class="section-title">Profesyonel Yolculuğum</h2>
+    <div class="journey-timeline">
+      <div class="timeline-item" *ngFor="let item of journeyData">
+        <div class="timeline-icon">
+          <i [class]="item.icon"></i>
+        </div>
+        <div class="timeline-content">
+          <h3>{{ item.title }}</h3>
+          <span class="timeline-period">{{ item.period }}</span>
+          <p>{{ item.description }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -34,7 +75,7 @@
     <div class="mv-grid">
       <div class="mv-card">
         <div class="mv-icon">🎯</div>
-        <h2>Missiya</h2>
+        <h2>Misyon</h2>
         <p>{{ profileData.mission }}</p>
       </div>
       <div class="mv-card">
@@ -46,12 +87,52 @@
   </div>
 </section>
 
+<!-- Skills & Expertise -->
+<section class="skills-section">
+  <div class="container">
+    <h2 class="section-title">Ekspertiza Sahələri</h2>
+    <div class="skills-grid">
+      <div class="skill-category" *ngFor="let category of skillsData">
+        <div class="skill-icon">
+          <i [class]="category.icon"></i>
+        </div>
+        <h3>{{ category.name }}</h3>
+        <div class="skill-tags">
+          <span class="skill-tag" *ngFor="let skill of category.skills">
+            {{ skill }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Education & Certifications -->
+<section class="education-section">
+  <div class="container">
+    <h2 class="section-title">Təhsil və Sertifikatlar</h2>
+    <div class="education-grid">
+      <div class="education-card" *ngFor="let edu of educationData">
+        <div class="education-icon">
+          <i [class]="edu.icon"></i>
+        </div>
+        <div class="education-content">
+          <h3>{{ edu.degree }}</h3>
+          <h4>{{ edu.institution }}</h4>
+          <span class="education-year">{{ edu.year }}</span>
+          <p *ngIf="edu.description">{{ edu.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA Section -->
 <section class="cta-section">
   <div class="container">
     <div class="cta-content">
       <h2>Birlikdə İşləyək</h2>
-      <p>AI\'ın gücünü işinizə inteqrasiya etmək üçün bu gün əlaqə saxlayın.</p>
+      <p>AI'ın gücünü işinizə inteqrasiya etmək üçün bu gün əlaqə saxlayın.</p>
       <button class="btn btn-primary" routerLink="/contact">Əlaqə Saxla</button>
     </div>
   </div>

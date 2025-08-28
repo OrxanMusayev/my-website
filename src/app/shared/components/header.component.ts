@@ -1,6 +1,7 @@
 import { Component, Inject, PLATFORM_ID, HostListener, OnInit } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -27,23 +28,32 @@ export class HeaderComponent implements OnInit {
     { label: 'Haqqımda', route: '/about', isActive: false },
     { label: 'Xidmətlər', route: '/services', isActive: false },
     { label: 'Marketplace', route: '/marketplace', isActive: false },
-    { label: 'Bloq', route: '/blog', isActive: false },
     { label: 'Əlaqə', route: '/contact', isActive: false }
   ];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private router: Router) {}
 
   ngOnInit() {
+    // Her route değişikliğinde sayfanın başına scroll et
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        window.scrollTo(0, 0);
+      });
+
     if (isPlatformBrowser(this.platformId)) {
+      // Load saved theme
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme) {
         this.isDarkMode = savedTheme === 'dark';
         document.documentElement.setAttribute('data-theme', savedTheme);
       } else {
         // Check system preference
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        this.isDarkMode = prefersDark;
-        document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        if (isPlatformBrowser(this.platformId)) {
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          this.isDarkMode = prefersDark;
+          document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        }
       }
     }
   }
@@ -119,8 +129,16 @@ export class HeaderComponent implements OnInit {
   logout(event: Event) {
     event.preventDefault();
     console.log('Logout user');
-    this.isLoggedIn = false;
     this.isUserMenuOpen = false;
     // TODO: Implement logout logic
+  }
+
+  // Navigation linklerine tıklandığında scroll to top
+  onNavLinkClick() {
+    setTimeout(() => {
+      if (isPlatformBrowser(this.platformId)) {
+        window.scrollTo(0, 0);
+      }
+    }, 100);
   }
 }

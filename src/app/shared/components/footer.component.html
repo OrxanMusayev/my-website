@@ -35,7 +35,7 @@
         <h4>Sürətli Linklər</h4>
         <ul class="footer-links">
           <li *ngFor="let link of quickLinks">
-            <a [routerLink]="link.route">{{ link.name }}</a>
+            <a [routerLink]="link.route" (click)="onLinkClick()">{{ link.name }}</a>
           </li>
         </ul>
       </div>
