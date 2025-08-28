@@ -8,140 +8,201 @@
   </div>
 </section>
 
-<!-- Contact Form Section -->
+<!-- Main Contact Section -->
+<!-- İkonlar: LinkedIn <i class="fab fa-linkedin" style="color:#0A66C2;background:#fff;border-radius:3px;padding:2px;"></i>, Email <i class="fas fa-envelope" style="color:#222;background:#fff;border-radius:3px;padding:2px;"></i>, Saat <i class="fas fa-clock" style="color:#222;background:#fff;border-radius:3px;padding:2px;"></i> -->
 <section class="contact-section">
   <div class="container">
     <div class="contact-wrapper">
-      <!-- Contact Info -->
-      <div class="contact-info">
+      
+      <!-- Contact Info Card -->
+      <div class="contact-info-card">
         <h2>Mənimlə Əlaqə Saxlayın</h2>
-        <p>AI məsləhət xidmətlərim barədə suallarınız var? Layihənizi müzakirə etmək istəyirsiniz? Mənimlə əlaqə saxlayın!</p>
+        <p class="info-subtitle">AI məsləhət xidmətlərim barədə suallarınız var? Layihənizi müzakirə etmək istəyirsiniz? Mənimlə əlaqə saxlayın!</p>
         
         <div class="contact-methods">
           <div class="contact-method">
-            <div class="method-icon">📧</div>
+            <div class="method-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
             <div class="method-content">
-              <h3>E-mail</h3>
-              <p>orxan@musayev.com</p>
+              <h4>E-mail</h4>
+              <a href="mailto:orxanmusayev1102@gmail.com">orxanmusayev1102@gmail.com</a>
+            </div>
+          </div>
+          
+
+          
+          <div class="contact-method">
+            <div class="method-icon">
+              <i class="fab fa-linkedin"></i>
+            </div>
+            <div class="method-content">
+              <h4>LinkedIn</h4>
+              <a href="https://www.linkedin.com/in/orxanmuss/" target="_blank">linkedin.com/in/orxanmuss</a>
             </div>
           </div>
           
           <div class="contact-method">
-            <div class="method-icon">📱</div>
+            <div class="method-icon">
+              <i class="fas fa-clock"></i>
+            </div>
             <div class="method-content">
-              <h3>Telefon</h3>
-              <p>+994 50 123 45 67</p>
+              <h4>İş Saatları</h4>
+              <span>B.e - Cümə: 09:00 - 18:00</span>
             </div>
           </div>
-          
-          <div class="contact-method">
-            <div class="method-icon">🌐</div>
-            <div class="method-content">
-              <h3>LinkedIn</h3>
-              <p>linkedin.com/in/orxanmusayev</p>
-            </div>
+        </div>
+
+        <!-- Response Time Info -->
+        <div class="response-info">
+          <div class="response-icon">
+            <i class="fas fa-bolt"></i>
           </div>
-          
-          <div class="contact-method">
-            <div class="method-icon">⏰</div>
-            <div class="method-content">
-              <h3>İş Saatları</h3>
-              <p>B.e - Cümə: 09:00 - 18:00</p>
-            </div>
+          <div class="response-content">
+            <h4>Cavab Müddəti</h4>
+            <p>Adətən 24 saat ərzində cavab veririk.</p>
           </div>
         </div>
       </div>
 
       <!-- Contact Form -->
-      <div class="contact-form-container">
-        <form class="contact-form" (ngSubmit)="onSubmit()">
+      <div class="contact-form-card">
+        <div *ngIf="!isFormSubmitted" class="form-container">
           <h3>Mesaj Göndərin</h3>
+          <p class="form-subtitle">Formu doldurun və qısa müddətdə sizinlə əlaqə saxlayaq.</p>
           
-          <div class="form-group">
-            <label for="name">Ad Soyad *</label>
-            <input 
-              type="text" 
-              id="name" 
-              name="name"
-              [(ngModel)]="contactForm.name"
-              required
-              placeholder="Adınızı daxil edin"
+          <form class="contact-form" (ngSubmit)="onSubmit()" #contactFormRef="ngForm">
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Ad Soyad *</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name"
+                  [(ngModel)]="contactForm.name"
+                  required
+                  placeholder="Adınızı daxil edin"
+                  #nameField="ngModel"
+                  [class.error]="nameField.invalid && nameField.touched"
+                >
+                <span class="error-message" *ngIf="nameField.invalid && nameField.touched">
+                  Ad və soyad məcburidir
+                </span>
+              </div>
+              
+              <div class="form-group">
+                <label for="email">E-mail *</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email"
+                  [(ngModel)]="contactForm.email"
+                  required
+                  email
+                  placeholder="E-mail ünvanınızı daxil edin"
+                  #emailField="ngModel"
+                  [class.error]="emailField.invalid && emailField.touched"
+                >
+                <span class="error-message" *ngIf="emailField.invalid && emailField.touched">
+                  Düzgün e-mail ünvanı daxil edin
+                </span>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="company">Şirkət</label>
+                <input 
+                  type="text" 
+                  id="company" 
+                  name="company"
+                  [(ngModel)]="contactForm.company"
+                  placeholder="Şirkət adınızı daxil edin"
+                >
+              </div>
+              
+              <div class="form-group">
+                <label for="service">Xidmət Növü</label>
+                <select 
+                  id="service" 
+                  name="service"
+                  [(ngModel)]="contactForm.service"
+                >
+                  <option value="">Xidmət seçin</option>
+                  <option value="consulting">AI Məsləhət</option>
+                  <option value="strategy">AI Strategiya</option>
+                  <option value="training">Komanda Təlimi</option>
+                  <option value="automation">Avtomatlaşdırma</option>
+                  <option value="other">Digər</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="budget">Büdcə Aralığı</label>
+              <select 
+                id="budget" 
+                name="budget"
+                [(ngModel)]="contactForm.budget"
+              >
+                <option value="">Büdcə seçin</option>
+                <option value="under-500">500 USD-dən az</option>
+                <option value="500-1000">500-1.000 USD</option>
+                <option value="1000-5000">1.000-5.000 USD</option>
+                <option value="5000-20000">5.000-20.000 USD</option>
+                <option value="over-20000">20.000 USD-dən artıq</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Mesajınız *</label>
+              <textarea 
+                id="message" 
+                name="message"
+                [(ngModel)]="contactForm.message"
+                required
+                rows="6"
+                placeholder="Layihəniz və ehtiyaclarınız haqqında ətraflı məlumat verin"
+                #messageField="ngModel"
+                [class.error]="messageField.invalid && messageField.touched"
+              ></textarea>
+              <span class="error-message" *ngIf="messageField.invalid && messageField.touched">
+                Mesaj məcburidir
+              </span>
+            </div>
+            
+            <button 
+              type="submit" 
+              class="btn btn-primary submit-btn" 
+              [disabled]="isSubmitting || contactFormRef.invalid"
             >
-          </div>
-          
-          <div class="form-group">
-            <label for="email">E-mail *</label>
-            <input 
-              type="email" 
-              id="email" 
-              name="email"
-              [(ngModel)]="contactForm.email"
-              required
-              placeholder="E-mail ünvanınızı daxil edin"
-            >
-          </div>
-          
-          <div class="form-group">
-            <label for="company">Şirkət</label>
-            <input 
-              type="text" 
-              id="company" 
-              name="company"
-              [(ngModel)]="contactForm.company"
-              placeholder="Şirkət adınızı daxil edin"
-            >
-          </div>
-          
-          <div class="form-group">
-            <label for="service">Xidmət Növü</label>
-            <select 
-              id="service" 
-              name="service"
-              [(ngModel)]="contactForm.service"
-            >
-              <option value="">Xidmət seçin</option>
-              <option value="consulting">AI Məsləhət</option>
-              <option value="strategy">AI Strategiya</option>
-              <option value="training">Komanda Təlimi</option>
-              <option value="automation">Avtomatlaşdırma</option>
-              <option value="other">Digər</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="budget">Büdcə Aralığı</label>
-            <select 
-              id="budget" 
-              name="budget"
-              [(ngModel)]="contactForm.budget"
-            >
-              <option value="">Büdcə seçin</option>
-              <option value="under-5k">5.000 AZN-dən az</option>
-              <option value="5k-10k">5.000 - 10.000 AZN</option>
-              <option value="10k-25k">10.000 - 25.000 AZN</option>
-              <option value="25k-50k">25.000 - 50.000 AZN</option>
-              <option value="over-50k">50.000 AZN-dən çox</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="message">Mesajınız *</label>
-            <textarea 
-              id="message" 
-              name="message"
-              [(ngModel)]="contactForm.message"
-              required
-              rows="5"
-              placeholder="Layihəniz və ehtiyaclarınız haqqında ətraflı məlumat verin"
-            ></textarea>
-          </div>
-          
-          <button type="submit" class="btn btn-primary" [disabled]="isSubmitting">
-            <span *ngIf="!isSubmitting">Mesaj Göndər</span>
-            <span *ngIf="isSubmitting">Göndərilir...</span>
+              <span *ngIf="!isSubmitting">
+                <i class="fas fa-paper-plane"></i>
+                Mesaj Göndər
+              </span>
+              <span *ngIf="isSubmitting">
+                <i class="fas fa-spinner fa-spin"></i>
+                Göndərilir...
+              </span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Success Message -->
+        <div *ngIf="isFormSubmitted" class="success-message">
+          <div class="success-icon">✓</div>
+          <h3>Mesajınız Uğurla Göndərildi!</h3>
+          <p>Təşəkkür edirik! Mesajınızı aldıq və qısa müddətdə sizinlə əlaqə saxlayacağıq.</p>
+          <button 
+            class="btn btn-secondary" 
+            (click)="resetForm()"
+          >
+            Yeni Mesaj Göndər
           </button>
-        </form>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -150,18 +211,22 @@
 <section class="faq-section">
   <div class="container">
     <h2 class="section-title">Tez-tez Verilən Suallar</h2>
-    <div class="faq-list">
+    <div class="faq-container">
       <div class="faq-item" *ngFor="let faq of faqs; let i = index">
         <button 
           class="faq-question" 
           (click)="toggleFaq(i)"
           [class.active]="faq.isOpen"
         >
-          <span>{{ faq.question }}</span>
-          <span class="faq-icon">{{ faq.isOpen ? '−' : '+' }}</span>
+          <span class="question-text">{{ faq.question }}</span>
+          <span class="faq-icon">
+            <i [class]="faq.isOpen ? 'fas fa-minus' : 'fas fa-plus'"></i>
+          </span>
         </button>
         <div class="faq-answer" [class.open]="faq.isOpen">
-          <p>{{ faq.answer }}</p>
+          <div class="answer-content">
+            <p>{{ faq.answer }}</p>
+          </div>
         </div>
       </div>
     </div>
