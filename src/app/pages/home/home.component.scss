@@ -1,7 +1,7 @@
 // Hero Section Styles
 .hero {
   position: relative;
-  height: 70vh;
+  height: 80vh;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -28,7 +28,7 @@
     color: white;
 
     .hero-title {
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
       font-weight: 800;
       margin-bottom: 1.5rem;
       margin-top: 4rem;

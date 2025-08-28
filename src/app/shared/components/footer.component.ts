@@ -32,39 +32,43 @@ export class FooterComponent implements OnInit {
   socialLinks = [
     { 
       name: 'LinkedIn', 
-      url: 'https://linkedin.com/in/orxanmusayev', 
+      url: 'https://www.linkedin.com/in/orxanmuss/', 
       icon: 'fab fa-linkedin',
       platform: 'linkedin'
     },
     { 
       name: 'Email', 
-      url: 'mailto:info@orxanmusayev.com', 
+      url: 'mailto:orxanmusayev1102@gmail.com', 
       icon: 'fas fa-envelope',
       platform: 'email'
     },
     { 
       name: 'Instagram', 
-      url: 'https://instagram.com/orxanmusayev', 
+      url: 'https://www.instagram.com/aiwithorxan/', 
       icon: 'fab fa-instagram',
       platform: 'instagram'
     }
   ];
 
-  constructor(private router: Router) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private router: Router) {}
 
   ngOnInit() {
     // Her route değişikliğinde sayfanın başına scroll et
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
-        window.scrollTo(0, 0);
+        if (isPlatformBrowser(this.platformId)) {
+          window.scrollTo(0, 0);
+        }
       });
   }
 
   // Footer linklerine tıklandığında da scroll to top
   onLinkClick() {
     setTimeout(() => {
-      window.scrollTo(0, 0);
+      if (isPlatformBrowser(this.platformId)) {
+        window.scrollTo(0, 0);
+      }
     }, 100);
   }
 }

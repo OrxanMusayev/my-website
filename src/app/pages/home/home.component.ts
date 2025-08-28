@@ -13,6 +13,6 @@ export class HomeComponent {
   services = [
     { title: 'Vaxt Qazanın', description: 'AI ilə proseslərinizi avtomatlaşdırın' },
     { title: 'Xərcləri Azaldın', description: 'Səmərəli AI həlləri ilə qənaət edin' },
-    { title: 'Məhsuldarlığı Artırın', description: 'İş axınlarınızı optimallaşdırın' }
+    { title: 'Məhsuldarlığı Artırın', description: 'İş axışlarını optimallaşdırın' }
   ];
 }
