@@ -21,13 +21,23 @@
       </nav>
       
       <div class="header-actions">
-        <button 
-          class="theme-toggle" 
-          (click)="toggleTheme()"
-          [attr.aria-label]="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'">
-          {{ isDarkMode ? '☀️' : '🌙' }}
+        <!-- Login button - when not logged in -->
+        <button
+          *ngIf="!isLoggedIn"
+          class="login-btn"
+          (click)="showLogin()">
+          <i class="fas fa-sign-in-alt"></i>
+          Daxil ol
         </button>
-        
+
+        <!-- Account section - when logged in -->
+        <div class="account-section modern" *ngIf="isLoggedIn" tabindex="0">
+          <div class="avatar big-gray" (click)="isUserMenuOpen = !isUserMenuOpen">{{ userInitials }}</div>
+          <div class="user-menu-modern" *ngIf="isUserMenuOpen">
+            <div class="user-email" (click)="$event.stopPropagation()">orxan.musayev@gmail.com</div>
+            <button class="user-menu-item-modern logout-btn" (click)="logout($event)"><i class="fas fa-sign-out-alt"></i> Çıxış</button>
+          </div>
+        </div>
         <button 
           class="mobile-menu-toggle" 
           [class.open]="isMobileMenuOpen"

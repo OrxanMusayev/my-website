@@ -1,4 +1,4 @@
-import { Component, Inject, PLATFORM_ID, HostListener, OnInit } from '@angular/core';
+import { Component, Inject, PLATFORM_ID, HostListener, OnInit, AfterViewInit, OnDestroy, ElementRef, Renderer2, ChangeDetectorRef } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -10,17 +10,21 @@ import { filter } from 'rxjs/operators';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   isDarkMode = false;
   isScrolled = false;
   isMobileMenuOpen = false;
-  
+
   // User authentication states
   isLoggedIn = true; // Test için true yapıyoruz
   isUserMenuOpen = false;
   userName = 'Orxan Musayev';
   userAvatar = '';
-  userInitials = 'OM';
+
+  get userInitials(): string {
+    if (!this.userName) return '';
+    return this.userName.trim().charAt(0).toUpperCase();
+  }
 
   // Navigation links
   navLinks = [
@@ -31,52 +35,72 @@ export class HeaderComponent implements OnInit {
     { label: 'Əlaqə', route: '/contact', isActive: false }
   ];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object, private router: Router) {}
+  private globalClickUnlisten: (() => void) | null = null;
+
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private router: Router,
+    private elRef: ElementRef,
+    private renderer: Renderer2,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
-    // Her route değişikliğinde sayfanın başına scroll et
-    this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(() => {
-        window.scrollTo(0, 0);
-      });
+    // Set active nav link based on current route
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      this.updateActiveNavLink(event.url);
+    });
 
+    // Initial active link
+    this.updateActiveNavLink(this.router.url);
+  }
+
+  ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
-      // Load saved theme
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        this.isDarkMode = savedTheme === 'dark';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-      } else {
-        // Check system preference
-        if (isPlatformBrowser(this.platformId)) {
-          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          this.isDarkMode = prefersDark;
-          document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+      this.globalClickUnlisten = this.renderer.listen('document', 'click', (event: MouseEvent) => {
+        // Eğer menü açık değilse hiçbir şey yapma
+        if (!this.isUserMenuOpen) return;
+
+        // Tıklanan elementin account section içinde olup olmadığını kontrol et
+        const clickedElement = event.target as HTMLElement;
+        const accountSection = this.elRef.nativeElement.querySelector('.account-section.modern');
+
+        // Eğer account section dışında bir yere tıklandıysa menüyü kapat
+        if (accountSection && !accountSection.contains(clickedElement)) {
+          console.log('Menü kapatılıyor - dışarı tıklandı');
+          this.isUserMenuOpen = false;
+          // Angular'ın change detection'ını manuel olarak tetikle
+          this.cdr.detectChanges();
+          console.log('Menü kapatıldı, change detection tetiklendi');
         }
-      }
+      });
     }
   }
 
-  @HostListener('window:scroll')
+  ngOnDestroy() {
+    if (this.globalClickUnlisten) {
+      this.globalClickUnlisten();
+    }
+  }
+
+  private updateActiveNavLink(currentUrl: string) {
+    this.navLinks.forEach(link => {
+      link.isActive = link.route === currentUrl;
+    });
+  }
+
+  @HostListener('window:scroll', [])
   onWindowScroll() {
     if (isPlatformBrowser(this.platformId)) {
       this.isScrolled = window.pageYOffset > 50;
     }
   }
 
-  toggleTheme() {
-    if (isPlatformBrowser(this.platformId)) {
-      this.isDarkMode = !this.isDarkMode;
-      const theme = this.isDarkMode ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
-    }
-  }
-
   toggleMobileMenu() {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
-    
+
     // Prevent body scroll when mobile menu is open
     if (isPlatformBrowser(this.platformId)) {
       if (this.isMobileMenuOpen) {
@@ -129,8 +153,21 @@ export class HeaderComponent implements OnInit {
   logout(event: Event) {
     event.preventDefault();
     console.log('Logout user');
+
+    // Logout işlemi
+    this.isLoggedIn = false;
     this.isUserMenuOpen = false;
-    // TODO: Implement logout logic
+
+    // Local storage'dan user bilgilerini temizle (örnek)
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+    }
+
+    // İsteğe bağlı: Login sayfasına yönlendir
+    // this.router.navigate(['/login']);
+
+    console.log('User logged out successfully');
   }
 
   // Navigation linklerine tıklandığında scroll to top

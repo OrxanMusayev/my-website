@@ -1,12 +1,13 @@
 // Marketplace Hero Section
 .marketplace-hero {
-  padding: 2rem 0 6rem;
+  padding: 2rem 0 1rem;
   text-align: center;
   background: var(--bg-primary);
 
   .hero-content {
     max-width: 800px;
     margin: 0 auto;
+    margin-bottom: 0.5rem;
 
     h1 {
       font-size: 3.5rem;
@@ -32,7 +33,7 @@
 
   .search-section {
     max-width: 500px;
-    margin: 0 auto;
+    margin: 0 auto 0.25rem auto;
 
     .search-bar {
       position: relative;
@@ -50,7 +51,7 @@
         width: 100%;
         padding: 1rem 1rem 1rem 3rem;
         border: 2px solid var(--border-color);
-        border-radius: 12px;
+  border-radius: 24px;
         font-size: 1rem;
         background: var(--card-bg);
         color: var(--text-primary);
@@ -78,7 +79,7 @@
 
   .categories-filter {
     display: flex;
-    gap: 1rem;
+  gap: 0.25rem;
     justify-content: center;
     flex-wrap: wrap;
 

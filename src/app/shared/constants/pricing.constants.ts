@@ -27,10 +27,9 @@ export const PRICING_CONFIG = {
       period: 'ay',
       description: 'Fikir mərhələsindəki layihələr üçün əsas yol xəritəsi və AI alətləri təklifləri təqdim edir.',
       features: [
-        'AI strategiyası məsləhəti',
-        'Uyğun alət təklifləri',
-        'Əsas tətbiq bələdçisi',
-        '2 saat pulsuz məsləhət'
+        '2 saat pulsuz məsləhət',
+        'AI alətlərinin düzgün istifadə üzrə təlim',
+        '15-yə yaxın AI avtomatlaşdirma sistemlərindən pulsuz istifadə',
       ],
       popular: false
     },
@@ -43,10 +42,10 @@ export const PRICING_CONFIG = {
       period: 'ay',
       description: 'Müəyyən bir layihədə AI inteqrasiyasını addım-addım tətbiq etməyi əhatə edən hərtərəfli dəstək.',
       features: [
+        'Hər həftə 1 saatlıq konsultasiya',
         'Ətraflı layihə təhlili',
-        'Fərdiləşdirilmiş AI həlləri',
+        '50-yə yaxın AI avtomatlaşdırma sistemlərindən pulsuz istifadə',
         'Addım-addım tətbiq',
-        'Davamlı dəstək və mentorluq',
         'Performans optimallaşdırılması'
       ],
       popular: true
@@ -65,7 +64,6 @@ export const PRICING_CONFIG = {
         'Komanda təlimi və mentorluq',
         'Miqyaslana bilən sistem arxitekturası',
         '7/24 texniki dəstək',
-        'ROI təhlili və hesabat'
       ],
       popular: false
     }

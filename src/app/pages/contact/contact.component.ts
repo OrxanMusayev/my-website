@@ -28,7 +28,7 @@ interface FAQ {
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit, OnDestroy {
-  
+
   // Form Data
   contactForm: ContactForm = {
     name: '',
@@ -47,33 +47,33 @@ export class ContactComponent implements OnInit, OnDestroy {
   // FAQ Data
   faqs: FAQ[] = [
     {
-      question: 'AI məsləhət xidmətləriniz nələri əhatə edir?',
-      answer: 'AI strategiya hazırlama, alət seçimi, komanda təlimi, avtomatlaşdırma həlləri və məlumat analitikası kimi geniş spektrli xidmətlər təklif edirəm. Hər layihə üçün fərdiləşdirilmiş yanaşma tətbiq edirəm.',
+      question: 'AI xidmətlərinizə nələri əhatə edir?',
+      answer: 'AI dəstəkli strategiyanın hazırlanması, AI alətlər seçimi, komanda təlimi, avtomatlaşdırma həlləri və məlumat analitikası kimi geniş spektrli xidmətlər təklif olunur. Hər layihə üçün fərdiləşdirilmiş yanaşma tətbiq edilir.',
       isOpen: false
     },
     {
-      question: 'Layihə nə qədər vaxt sürar?',
-      answer: 'Layihənin mürəkkəbliyindən asılı olaraq, sadə məsləhət 1-2 həftə, tam strategiya planı 4-6 həftə, böyük korporativ həllər isə 2-6 ay çəkə bilər. Təfsilatları ilk məsləhətdə müzakirə edirik.',
+      question: 'Fərdi həllər üçün layihələr nə qədər vaxt davam edir?',
+      answer: 'Layihənin mürəkkəbliyindən asılı olaraq, sadə məsləhət 1-2 həftə, tam strategiya planı 4-6 həftə, xüsusi avtomatlaşdırılmı sistemlərin qurulmasi 4-8 həftə, böyük korporativ həllər isə 2-6 ay çəkə bilər. Təfsilatları konsultasiya zamani müzakirə edirik.',
       isOpen: false
     },
     {
       question: 'Hansı sektorlarla işləyirsiniz?',
-      answer: 'E-ticarət, maliyyə, səhiyyə, təhsil, istehsal və xidmət sektorları daxil olmaqla müxtəlif sahələrdə təcrübəm var. Hər sektorun spesifik ehtiyaclarına uyğun həllər təklif edirəm.',
+      answer: 'E-ticarət, maliyyə, səhiyyə, təhsil, turizm və xidmət sektorları daxil olmaqla müxtəlif sahələrdə xidmətlər təklif olunur. Hər sektorun spesifik ehtiyaclarına uyğun həllər təklif edirik.',
       isOpen: false
     },
     {
-      question: 'Uzaqdan işləmək mümkündürmü?',
-      answer: 'Bəli, bütün məsləhət xidmətlərimi uzaqdan təqdim edə bilirəm. Online görüşlər, ekran paylaşımı və virtual təlimlər vasitəsilə effektiv əməkdaşlıq edirəm. Lazım gəldikdə yerində görüş də təşkil edə bilərik.',
+      question: 'Uzaqdan əməkdaşlıq mümkündürmü?',
+      answer: 'Bəli, bütün məsləhət xidmətlərimi uzaqdan təqdim edə bilirəm. Online görüşlər, ekran paylaşımı və virtual təlimlər vasitəsilə effektiv əməkdaşlıq mümkündür. Lazım gəldikdə yerində görüş də təşkil olunur.',
       isOpen: false
     },
     {
       question: 'Layihədən sonra dəstək verirsizmi?',
-      answer: 'Bəli, bütün layihələrə 3 aylıq pulsuz dəstək daxildir. Bu müddətdə yarana biləcək sualları cavablandırır və lazımi korreksiyaları aparıram. Sonrasında da uzunmüddətli dəstək paketləri mövcuddur.',
+      answer: 'Bəli, bütün layihələrə pulsuz dəstək daxildir. Bu müddətdə yarana biləcək sualları cavablandırır və lazımi düzəlişləri aparıram. Sonrasında da uzunmüddətli dəstək paketləri mövcuddur.',
       isOpen: false
     },
     {
       question: 'Qiymətlər necə formalaşır?',
-      answer: 'Qiymətlər layihənin mürəkkəbliyi, tələb olunan vaxt və resurslardan asılıdır. Standart paketlərim mövcuddur, lakin hər layihə üçün fərdi qiymət təklifi hazırlayıram. Pulsuz ilkin məsləhətdə büdcənizi müzakirə edirik.',
+      answer: 'Qiymətlər layihənin mürəkkəbliyi, tələb olunan vaxt və resurslardan asılıdır. Standart paketlər olaraq mövcuddur, lakin hər layihə üçün fərdi qiymət təklifi hazırlayıram. Pulsuz ilkin məsləhətdə büdcənizi müzakirə edirik.',
       isOpen: false
     }
   ];
@@ -89,14 +89,14 @@ export class ContactComponent implements OnInit, OnDestroy {
 
   // Budget Options
   budgetOptions = [
-  { value: 'under-500', label: '500 USD-dən az' },
+    { value: 'under-500', label: '500 USD-dən az' },
     { value: '500-1000', label: '500-1.000 USD' },
     { value: '1000-5000', label: '1.000-5.000 USD' },
     { value: '5000-20000', label: '5.000-20.000 USD' },
     { value: 'over-20000', label: '20.000 USD-dən artıq' }
   ];
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     // Component initialization
@@ -119,16 +119,16 @@ export class ContactComponent implements OnInit, OnDestroy {
     try {
       // Simulate API call - replace with actual service
       await this.submitContactForm(this.contactForm);
-      
+
       // Success
       this.isFormSubmitted = true;
       this.trackFormSubmission();
-      
+
     } catch (error) {
       // Error handling
       this.submitError = 'Mesaj göndərilmədi. Lütfən yenidən cəhd edin.';
       console.error('Form submission error:', error);
-      
+
     } finally {
       this.isSubmitting = false;
     }
@@ -193,7 +193,7 @@ export class ContactComponent implements OnInit, OnDestroy {
         faq.isOpen = false;
       }
     });
-    
+
     // Toggle selected FAQ
     this.faqs[index].isOpen = !this.faqs[index].isOpen;
   }
@@ -207,10 +207,10 @@ export class ContactComponent implements OnInit, OnDestroy {
   getFormCompletionPercentage(): number {
     const requiredFields = ['name', 'email', 'message'];
     const optionalFields = ['company', 'service', 'budget'];
-    
+
     let completed = 0;
     let total = requiredFields.length + optionalFields.length;
-    
+
     // Check required fields (weighted more)
     requiredFields.forEach(field => {
       if (this.contactForm[field as keyof ContactForm].trim()) {
@@ -218,14 +218,14 @@ export class ContactComponent implements OnInit, OnDestroy {
         total += 1; // Adjust total accordingly
       }
     });
-    
+
     // Check optional fields
     optionalFields.forEach(field => {
       if (this.contactForm[field as keyof ContactForm].trim()) {
         completed += 1;
       }
     });
-    
+
     return Math.round((completed / total) * 100);
   }
 
@@ -239,7 +239,7 @@ export class ContactComponent implements OnInit, OnDestroy {
         value: 1
       });
     }
-    
+
     // Console log for development
     console.log('Contact form submitted:', {
       timestamp: new Date().toISOString(),

@@ -1,7 +1,21 @@
+// Pulsuz Məsləhət Al button (btn-secondary) - white background
+.btn-secondary {
+  background: #fff !important;
+  color: #222 !important;
+  border: 2px solid #fff !important;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-secondary:hover, .btn-secondary:focus {
+  background: #f0f0f0 !important;
+  color: #111 !important;
+  border-color: #f0f0f0 !important;
+}
 // Services Hero Section - TÜM ŞEYİ SİFIRLA
 .services-hero {
-  margin-top: -80px; // main-content'in 80px padding'ini iptal et
-  padding: 40px 0 2rem 0; // Header space + content space (daha az boşluq)
+  margin-top: -40px; // main-content'in 80px padding'ini iptal et - daha fazla üst boşluk
+  padding: 80px 0 2rem 0; // Header space + content space (daha fazla üst boşluk)
   background: linear-gradient(135deg, var(--primary), var(--text-secondary));
   color: var(--background);
   text-align: center;
